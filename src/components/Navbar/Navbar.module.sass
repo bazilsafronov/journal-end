@@ -1,0 +1,59 @@
+$black-color-text: #000000
+@media (min-width: 992px)
+.header 
+    display: flex
+    justify-content: space-between 
+    align-items: center 
+    gap:15px
+    height: 60px 
+    padding: 1rem 
+    .menu_list
+        display: flex
+        flex-direction: row
+        gap: 20px
+        list-style-type: none
+        li a
+            text-decoration: none
+            color:$black-color-text
+            font-size: 18px
+.navigate
+    display: flex
+    gap: 10px
+    align-items: center
+    a
+        text-decoration: none
+        color: #000000
+.burger
+    display: none
+@media only screen and (orientation: portrait) and (min-device-width: 375px) and (max-device-width:920px)
+    body
+        margin: 0
+    .header 
+        display: flex
+        flex-direction: row 
+        flex-wrap: nowrap 
+        justify-content: space-between 
+        align-items: center 
+        height: 60px 
+        padding: 1rem 
+        .menu
+            position: absolute
+            left:0
+            top:0
+            background-color: #fff
+            color:$black-color-text
+            width:100%
+            .menu_list
+                display: block
+            .menu_list li a
+                text-decoration: none
+                padding-top: 10px
+                color: #000000
+                a 
+                    font-size: 18px 
+                    text-decoration: none 
+                    color: #000000
+        .burger
+            display: block
+            z-index: 9
+
