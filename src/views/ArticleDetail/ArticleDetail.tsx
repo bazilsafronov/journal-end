@@ -1,4 +1,4 @@
-import styles from "./ArticleDetail.module.sass";
+import styles from "../../styles/ArticleDetail.module.sass";
 const ArticleDetail = () => {
     return (
         <div>
@@ -29,39 +29,55 @@ const ArticleDetail = () => {
                 <section className={styles.social}>
                     <a href="">
           <span>
-            <img src="/tg.svg" height={36} width={36} alt="tg" />
+            <img src="/tg.svg" height={36} width={36} alt="tg"/>
           </span>
                     </a>
                     <a href="">
           <span>
-            <img src="/twitter.svg" height={36} width={36} alt="tg" />
+            <img src="/twitter.svg" height={36} width={36} alt="tg"/>
           </span>
                     </a>
                     <a href="">
           <span>
-            <img src="/inst.svg" height={36} width={36} alt="tg" />
+            <img src="/inst.svg" height={36} width={36} alt="tg"/>
           </span>
                     </a>
                     <a href="">
           <span>
-            <img src="/wats.svg" height={36} width={36} alt="tg" />
+            <img src="/wats.svg" height={36} width={36} alt="tg"/>
           </span>
                     </a>
                 </section>
-                <img className={styles.image} src="/reactjs.jpg" alt="image" />
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
+                <img className={styles.image} src="/reactjs.jpg" alt="image"/>
+                <p className={styles.paragraph}>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat
+                    numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet
+                    aspernatur voluptatibus. Odit, voluptates.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat
+                    numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet
+                    aspernatur voluptatibus. Odit, voluptates.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat
+                    numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet
+                    aspernatur voluptatibus. Odit, voluptates.
                 </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
+                <p className={styles.paragraph}>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat
+                    numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet
+                    aspernatur voluptatibus. Odit, voluptates.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat
+                    numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet
+                    aspernatur voluptatibus. Odit, voluptates.
                 </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
+                <p className={styles.paragraph}>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat
+                    numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet
+                    aspernatur voluptatibus. Odit, voluptates.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat
+                    numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet
+                    aspernatur voluptatibus. Odit, voluptates.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat
+                    numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet
+                    aspernatur voluptatibus. Odit, voluptates.
                 </p>
             </div>
         </div>

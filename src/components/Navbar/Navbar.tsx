@@ -1,11 +1,11 @@
 import styles from "./Navbar.module.sass";
-import {Link} from "react-router-dom";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
     <nav className={styles.header}>
       <div>
-          <Link to="/">
+          <Link href="/">
           <svg
               xmlns="http://www.w3.org/2000/svg"
               width="82"
@@ -50,7 +50,7 @@ const Navbar = () => {
       </div>
       <div className={styles.navigate}>
         <img src="/search.png" height={32} width={32} alt="search"/>
-        <a href="/">Login</a>
+        <Link href="/">Login</Link>
         <div className={styles.burger}>
           <img src="/menu.svg" alt="menu" height={32} width={32}/>
         </div>
