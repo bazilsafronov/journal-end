@@ -1,11 +1,17 @@
 import { useRouter } from 'next/router';
 import React from 'react';
 import styles from "../../styles/ArticleDetail.module.sass";
+import {slugify} from "../../utils/slugify.ts";
+import {articles} from "../../types/article.ts";
+
 
 const ArticleDetail = () => {
     const router = useRouter();
-    const { id } = router.query;
-    const { title } = router.query;
+    const { slug } = router.query;
+
+    const article = articles.find((article) => slugify(article.title) === slug);
+    if(!article) return <div>Not found article</div>
+
     return (
         <div>
             <div className={styles.line}></div>
@@ -30,8 +36,7 @@ const ArticleDetail = () => {
             </section>
             <div className={styles.content}>
                 <h1 className={styles.title}>
-                    12 Best React Courses in 2024 [Free + Paid] | Beginner to Pro
-                    + {title} + {id}
+                    {article.title}
                 </h1>
                 <section className={styles.social}>
                     <a href="">

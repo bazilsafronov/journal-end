@@ -1,11 +1,11 @@
 
 import React from 'react';
+import ArticleForm from "../components/Articles/ArticleForm/ArticleForm.tsx";
 // import UserList from "../views/UserList.tsx";
 
 const Home: React.FC = () => {
     return (
         <>
-
             <h1>Where developers
                 suffer together
             </h1>
@@ -14,6 +14,7 @@ const Home: React.FC = () => {
                 Personalized news feed, dev communities and search, much better than what’s out there. Maybe ;)
             </p>
             {/*<UserList />*/}
+            <ArticleForm />
         </>
     );
 };
