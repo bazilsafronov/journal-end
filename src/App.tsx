@@ -1,18 +1,23 @@
+import React from 'react';
+import AppRoutes from './routes/AppRoutes';
+import './styles/globals.sass';
+import Navbar from "./components/Navbar/Navbar";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import './App.css'
-import Banner from './components/Banner/Banner'
-import Home from './views/Home/Home'
-
-function App() {
-
+const App: React.FC = () => {
   return (
-    <>
-    <Banner />
-      <div className='container'>
-        <Home />
-        </div>
-    </>
-  )
-}
+      <Router>
+      <div>
+        <Navbar />
+        <main>
+          <AppRoutes />
+        </main>
+        <footer>
+          <p>© 2024 Мое приложение</p>
+        </footer>
+      </div>
+      </Router>
+  );
+};
 
-export default App
+export default App;
