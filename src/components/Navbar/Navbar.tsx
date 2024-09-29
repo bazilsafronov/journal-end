@@ -50,7 +50,7 @@ const Navbar = () => {
       </div>
       <div className={styles.navigate}>
         <img src="/search.png" height={32} width={32} alt="search"/>
-        <Link href="/">Login</Link>
+        <Link href="/register">Login</Link>
         <div className={styles.burger}>
           <img src="/menu.svg" alt="menu" height={32} width={32}/>
         </div>

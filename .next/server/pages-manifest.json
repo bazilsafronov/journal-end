@@ -2,9 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/articles": "pages/articles.js",
   "/": "pages/index.js",
-  "/articles/[slug]": "pages/articles/[slug].js",
-  "/api/articles": "pages/api/articles.js",
-  "/api/articles/[slug]": "pages/api/articles/[slug].js"
+  "/register": "pages/register.js",
+  "/login": "pages/login.js",
+  "/api/auth": "pages/api/auth.js"
 }
