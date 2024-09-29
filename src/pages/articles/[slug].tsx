@@ -1,19 +1,49 @@
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from "../../styles/ArticleDetail.module.sass";
-import {slugify} from "../../utils/slugify.ts";
-import {articles} from "../../types/article.ts";
+import { slugify } from "../../utils/slugify.ts";
+import { Article } from "../../types/article.ts";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-
-const ArticleDetail = () => {
+const ArticleDetail: React.FC = () => {
     const router = useRouter();
     const { slug } = router.query;
 
-    const article = articles.find((article) => slugify(article.title) === slug);
-    if(!article) return <div>Not found article</div>
+    const [article, setArticle] = useState<Article | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchArticle = async () => {
+            if (typeof slug === 'string') {  // Убедимся, что slug — это строка
+                try {
+                    const response = await fetch(`/api/articles/${slug}`);
+                    if (response.ok) {
+                        const data = await response.json();
+                        setArticle(data);
+                    } else {
+                        throw new Error('Статья не найдена');
+                    }
+                } catch (error) {
+                    toast.error(error.message || 'Не удалось загрузить статью!', {
+                        position: 'top-right',
+                        autoClose: 4000,
+                    });
+                } finally {
+                    setLoading(false);  // Устанавливаем состояние загрузки в false в любом случае
+                }
+            }
+        };
+
+        fetchArticle();
+    }, [slug]);
+
+    if (loading) return <div>Загрузка...</div>; // Показать индикатор загрузки
+    if (!article) return <div>Статья не найдена</div>; // Если статья не найдена или slug некорректный
 
     return (
         <div>
+            <ToastContainer />
             <div className={styles.line}></div>
             <main>
                 <ul className={styles.breadcrumb}>
@@ -40,41 +70,30 @@ const ArticleDetail = () => {
                 </h1>
                 <section className={styles.social}>
                     <a href="">
-          <span>
-            <img src="/tg.svg" height={36} width={36} alt="tg" />
-          </span>
+                        <span>
+                            <img src="/tg.svg" height={36} width={36} alt="tg" />
+                        </span>
                     </a>
                     <a href="">
-          <span>
-            <img src="/twitter.svg" height={36} width={36} alt="tg" />
-          </span>
+                        <span>
+                            <img src="/twitter.svg" height={36} width={36} alt="twitter" />
+                        </span>
                     </a>
                     <a href="">
-          <span>
-            <img src="/inst.svg" height={36} width={36} alt="tg" />
-          </span>
+                        <span>
+                            <img src="/inst.svg" height={36} width={36} alt="instagram" />
+                        </span>
                     </a>
                     <a href="">
-          <span>
-            <img src="/wats.svg" height={36} width={36} alt="tg" />
-          </span>
+                        <span>
+                            <img src="/wats.svg" height={36} width={36} alt="whatsapp" />
+                        </span>
                     </a>
                 </section>
-                <img className={styles.image} src="/reactjs.jpg" alt="image" />
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit laudantium officia fugiat numquam provident rem obcaecati odio, in quo quas amet molestiae enim accusantium, velit eveniet aspernatur voluptatibus. Odit, voluptates.
-                </p>
+                {article.imageUrl && (
+                    <img className={styles.image} src={article.imageUrl} alt="image" />
+                )}
+                <p>{article.content}</p>
             </div>
         </div>
     );

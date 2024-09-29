@@ -3,7 +3,7 @@ export default {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: '**', // Разрешает изображения с любых доменов
+                hostname: '**',
             },
         ],
     },
