@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import styles from "../../styles/ArticleDetail.module.sass";
-import { slugify } from "../../utils/slugify.ts";
 import { Article } from "../../types/article.ts";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -30,7 +29,7 @@ const ArticleDetail: React.FC = () => {
                         autoClose: 4000,
                     });
                 } finally {
-                    setLoading(false);  // Устанавливаем состояние загрузки в false в любом случае
+                    setLoading(false);
                 }
             }
         };
@@ -38,8 +37,8 @@ const ArticleDetail: React.FC = () => {
         fetchArticle();
     }, [slug]);
 
-    if (loading) return <div>Загрузка...</div>; // Показать индикатор загрузки
-    if (!article) return <div>Статья не найдена</div>; // Если статья не найдена или slug некорректный
+    if (loading) return <div>Загрузка...</div>;
+    if (!article) return <div>Статья не найдена</div>;
 
     return (
         <div>

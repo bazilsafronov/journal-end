@@ -1,35 +1,88 @@
+// Articles.module.sass
+
+$card-background: rgba(255, 255, 255, 0.9)
+$card-border-color: #ddd
+$card-hover-shadow: 0 4px 20px rgba(0, 0, 0, 0.1)
+$card-padding: 1rem
+$card-radius: 8px
+$tag-background: #007bff
+$tag-color: #fff
+$tag-padding: 0.3rem 0.6rem
+$tag-border-radius: 4px
+$card-width: 480px
+$card-font-color: #333 // Измените цвет, чтобы текст был видимым
+
 .articles_container
-  display: flex
-  flex-wrap: wrap
-  justify-content: space-between
-  padding: 20px
+  display: grid
+  grid-template-columns: repeat(2, 1fr) // Две колонки
+  gap: 2rem // Промежуток между карточками
+  justify-items: center // Центрирование карточек
+  padding: 2rem
+  max-width: 800px // Максимальная ширина контейнера
+  margin: 0 auto // Центрирование контейнера на странице
 
+  h1
+    margin-bottom: 1.5rem
+    font-size: 2rem
+    color: $card-border-color
 
-.article_card
-  background-color: #fff
-  border: 1px solid #ddd
-  border-radius: 15px
-  padding: 15px
-  margin: 15px
-  width: 300px
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1)
-  transition: transform 0.2s
+  .article_card
+    position: relative
+    background-color: $card-background
+    border: 1px solid $card-border-color
+    border-radius: $card-radius
+    overflow: hidden
+    width: $card-width
+    text-align: left
+    transition: box-shadow 0.3s
+    cursor: pointer
 
+    &:hover
+      box-shadow: $card-hover-shadow
 
-.article_card:hover
-  transform: translateY(-5px)
+    img
+      width: 100%
+      height: 260px
+      object-fit: cover
+      object-position: center
 
+    .content
+      padding: $card-padding
+      position: relative // Измените на relative
+      display: flex
+      flex-direction: column // Убедитесь, что элементы располагаются в столбик
+      height: 100% // Позволяет заполнять карточку
 
-.article_image
-  width: 100%
-  border-radius: 15px 15px 0 0
+      h2
+        font-size: 2rem
+        color: $card-font-color
 
+      p
+        font-size: 1rem
+        color: $card-font-color
+        margin: 0.5rem 0
+        max-height: 3rem
+        overflow: hidden
+        text-overflow: ellipsis
 
-.article_title
-  margin: 10px 0 5px
-  font-size: 1.5rem
+      .author
+        font-size: 20px
+        color: $card-font-color
+        margin-top: 0.2rem
 
-
-.article_content
-  color: #555
-
+      .tag
+        background-color: $tag-background
+        color: $tag-color
+        padding: $tag-padding
+        border-radius: $tag-border-radius
+        font-size: 0.9rem
+        display: inline-block
+        margin-top: 0.5rem
+    .placeholder
+        background-color: #f0f0f0 // Цвет фона заглушки
+        background-image: url('/images/default.jpg') // Путь к изображению-заглушке
+        background-size: cover // Заполнение фона
+        background-position: center // Центрирование фона
+        height: 260px // Высота, соответствующая изображению
+        width: 100% // Полная ширина карточки
+        border-radius: $card-radius // Радиус скругления, если необходимо

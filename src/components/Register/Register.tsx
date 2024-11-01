@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useRouter } from 'next/router'; // Импортируем useRouter
+import { useRouter } from 'next/router';
+import { useStore } from '../../stores/storeContext.tsx';
 
 const Register: React.FC = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const router = useRouter(); // Инициализируем роутер
+    const router = useRouter();
+    const store = useStore();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -17,12 +19,14 @@ const Register: React.FC = () => {
         });
 
         if (response.ok) {
-            const data = await response.json();
+            const { token } = await response.json(); // Предполагаем, что токен возвращается
+            localStorage.setItem('token', token);
+            store.setAuthenticated(true, token); // Если у вас есть метод в store для обновления состояния
             toast.success('Регистрация прошла успешно!', {
                 position: 'top-right',
                 autoClose: 4000,
             });
-            router.push('/'); // Используем router.push для редиректа
+            router.push('/');
         } else {
             const errorData = await response.json();
             toast.error(errorData.message || 'Ошибка при регистрации!', {
@@ -51,7 +55,10 @@ const Register: React.FC = () => {
                 />
                 <button type="submit">Зарегистрироваться</button>
             </form>
-            <ToastContainer />
+            <p>
+                Уже зарегистрированы? <a href="/login">Войти</a>
+            </p>
+            <ToastContainer/>
         </>
     );
 };
