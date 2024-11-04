@@ -1,37 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import { Article } from '../../types/article.ts'
-import styles from '../../styles/Articles.module.sass'
-import { slugify } from '../../utils/slugify.ts'
-import Link from 'next/link'
-import { toast } from 'react-toastify'
+import React, { useEffect, useState } from 'react';
+import { Article } from '../../types/article';
+import styles from '../../styles/Articles.module.sass';
+import { slugify } from '../../utils/slugify';
+import Link from 'next/link';
+import { toast } from 'react-toastify';
 
 const Articles: React.FC = () => {
-    const [articles, setArticles] = useState<Article[]>([])
-    const [loading, setLoading] = useState(true)
+    const [articles, setArticles] = useState<Article[]>([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchArticles = async () => {
             try {
-                const response = await fetch('/api/articles')
+                const response = await fetch('/api/articles');
                 if (!response.ok) {
-                    throw new Error('Не удалось загрузить статьи')
+                    throw new Error('Не удалось загрузить статьи');
                 }
-                const data = await response.json()
-                setArticles(data)
+                const data = await response.json();
+                setArticles(data);
             } catch (error) {
-                toast.error(error.message || 'Ошибка при загрузке статей!', {
+                const message = (error as Error).message || 'Ошибка при загрузке статей!';
+                toast.error(message, {
                     position: 'top-right',
                     autoClose: 4000,
-                })
+                });
             } finally {
-                setLoading(false)
+                setLoading(false);
             }
-        }
+        };
 
-        fetchArticles()
-    }, [])
+        fetchArticles();
+    }, []);
 
-    if (loading) return <div>Загрузка...</div>
+    if (loading) return <div>Загрузка...</div>;
 
     return (
         <div>
@@ -60,7 +61,7 @@ const Articles: React.FC = () => {
                 </div>
             )}
         </div>
-    )
-}
+    );
+};
 
-export default Articles
+export default Articles;
